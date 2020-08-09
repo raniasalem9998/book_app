@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/layout.css">
+    <link rel="stylesheet" href="./styles/modules.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <h1>Best Books !</h1>
+        <i class="fa fa-bars fa-2x" aria-hidden="true" style="color: aliceblue;"></i>
+    </header>
+
+    <main>
+        <form action="/searches" method="POST">
+            <fieldset>
+                <label for="book" id="book_id">Enter a title or author 
+                    <input type="text" id="book_id" name="search" placeholder="Enter a title or author">
+                </label>
+                <br>
+                <label for="searchBy" id="searchBy">
+                    <lable value="Title">Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="title" id="searchBy"></lable>
+                    <br>
+                    <lable value="Author">Author&nbsp;&nbsp;<input type="radio" name="auther" id="searchBy"></lable>
+                </label>
+                <br>
+                <button type="submit">Search the Google Books API</button>
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <i class="fa fa-circle fa-2x" aria-hidden="true" style="color:  rgb(85, 84, 84);" ></i>
+        <i class="fa fa-circle fa-2x" aria-hidden="true" style="color: rgb(85, 84, 84);"></i>
+        <i class="fa fa-circle fa-2x" aria-hidden="true" style="color:  rgb(85, 84, 84);"></i>
+        <i class="fa fa-circle fa-2x" aria-hidden="true" style="color:  rgb(85, 84, 84);"></i>
+    </footer>
+   
+    
+</body>
+</html>

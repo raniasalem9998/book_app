@@ -1,0 +1,36 @@
+body{
+   width: 480px;
+   height: 800px;
+   display: grid;
+   background-color: darkgray; 
+   color: black;
+   grid-template-rows: 10% 80% 10%;
+}
+header{
+   align-content: space-around;  
+   display: grid;
+   background-color: black;
+   grid-template-columns: 40% auto 10%;
+}
+main{
+   grid-template-rows: 1fr 10fr 1fr;
+   display: grid;
+   font-size: xx-large;
+   font-style: oblique;
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   text-align: center;
+ }
+ main div{
+   display: grid;
+   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+   align-content: space-between;  
+   justify-items: center;
+ }
+footer{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   background-color: black;
+   align-content: space-around;  
+   justify-items: center;
+}
+
