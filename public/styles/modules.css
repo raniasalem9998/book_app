@@ -1,0 +1,24 @@
+header h1{
+    color:white;
+font-size: x-large;
+}
+main h6{
+    text-align: center;
+    color: black;
+    font-size: xx-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+}
+main h1{
+    text-align: center;
+    color: white;
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: oblique;
+    background-color: rgb(85, 84, 84);
+}
+form button{
+     background-color: black;
+     outline: none;
+     color: white;
+ }

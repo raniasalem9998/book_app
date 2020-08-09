@@ -1,0 +1,20 @@
+main section{
+    grid-row: 7;
+}
+header h1{
+    grid-column: 1;
+}
+header i {
+    grid-column: 3;
+}
+
+main h6{
+    grid-row: 2;
+}
+main h1{
+    grid-row: 1;
+}
+form{
+    text-align: center;
+    grid-row: 2;
+}
