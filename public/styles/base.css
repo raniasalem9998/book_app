@@ -15,17 +15,17 @@ header{
 main{
    grid-template-rows: 1fr 10fr 1fr;
    display: grid;
-   font-size: xx-large;
    font-style: oblique;
    font-family: Georgia, 'Times New Roman', Times, serif;
    text-align: center;
- }
- main div{
-   display: grid;
-   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
-   align-content: space-between;  
    justify-items: center;
+   overflow-y: scroll;
  }
+
+main::-webkit-scrollbar {
+   display: none;
+}
+
 footer{
    display: grid;
    grid-template-columns: 1fr 1fr 1fr 1fr;

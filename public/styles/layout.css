@@ -12,8 +12,23 @@ main h6{
     grid-row: 2;
 }
 main h1{
+    width: 100%;
     grid-row: 1;
 }
+main ul{
+    grid-row: 2;
+}
+main ul{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr  1fr 1fr 1fr 1fr ;
+    align-content: space-around;  
+    justify-items: center;
+    margin: auto;
+    margin-top: 30px;
+    width:100%;
+
+    
+  }
 form{
     text-align: center;
     grid-row: 2;

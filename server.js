@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const superagent = require('superagent');
 const cors = require('cors');
+const pg = require('pg');
 require('dotenv').config();
 
 app.set('view engine','ejs');
@@ -13,9 +14,16 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({extended: true}));
 
 const PORT = process.env.PORT || 3000;
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err => console.error(err));
 
 app.get('/', (req,res)=>{
-  res.render('./pages/index.ejs');
+
+  return client.query('select * from books;').then(results =>{
+    res.render('./pages/index.ejs',{books:results.rows,bookNum:results.rowCount});
+  });
+
 });
 
 
