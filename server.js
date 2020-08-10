@@ -26,7 +26,11 @@ app.get('/', (req,res)=>{
 
 });
 
-
+app.get('/books/:id',(req,res)=>{
+client.query('SELECT * FROM books WHERE id=$1;',[req.params.id]).then(data =>{
+  res.render('pages/books/show', {book:data.rows[0]});
+})
+})
 app.get('/searches/new', (req,res)=>{
   res.render('./pages/searches/new.ejs');
 });
@@ -51,6 +55,7 @@ function Books(data) {
   this.title = data.volumeInfo.title || 'not available';
   this.img_url = data.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpg';
   this.author = data.volumeInfo.authors || 'not available';
+  this.ISBN = book.volumeInfo.industryIdentifiers[0].identifier || 'not available';
   this.discription = data.volumeInfo.description || 'not available';
 }
  
