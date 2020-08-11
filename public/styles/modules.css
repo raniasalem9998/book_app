@@ -17,6 +17,38 @@ main h1{
     font-style: oblique;
     background-color: rgb(85, 84, 84);
 }
+ul li{
+    background-color: rgb(223, 221, 221);
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    height: 80%;
+}
+ul li div{
+    margin-top: 5%;
+}
+li div h2{
+    font-size: small;
+    color: white;
+    font-style: unset;
+}
+li div h3{
+    margin-top: 10px;
+    font-size: x-small;
+    color: black;
+}
+li p{
+    margin-top: 5px;
+    left: 0px;
+    font-size: x-small;
+    color: black;
+    text-align: start;
+}
+li div{
+  width: 60%;  
+  margin: auto;
+  
+}
 form button{
      background-color: black;
      outline: none;

@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const superagent = require('superagent');
 const cors = require('cors');
+const pg = require('pg');
 require('dotenv').config();
 
 app.set('view engine','ejs');
@@ -13,12 +14,23 @@ app.use(express.static('./public'));
 app.use(express.urlencoded({extended: true}));
 
 const PORT = process.env.PORT || 3000;
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.on('error', err => console.error(err));
 
 app.get('/', (req,res)=>{
-  res.render('./pages/index.ejs');
+
+  return client.query('select * from books;').then(results =>{
+    res.render('./pages/index.ejs',{books:results.rows,bookNum:results.rowCount});
+  });
+
 });
 
-
+app.get('/books/:id',(req,res)=>{
+client.query('SELECT * FROM books WHERE id=$1;',[req.params.id]).then(data =>{
+  res.render('pages/books/show', {book:data.rows[0]});
+})
+})
 app.get('/searches/new', (req,res)=>{
   res.render('./pages/searches/new.ejs');
 });
@@ -43,6 +55,7 @@ function Books(data) {
   this.title = data.volumeInfo.title || 'not available';
   this.img_url = data.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/J5LVHEL.jpg';
   this.author = data.volumeInfo.authors || 'not available';
+  this.ISBN = book.volumeInfo.industryIdentifiers[0].identifier || 'not available';
   this.discription = data.volumeInfo.description || 'not available';
 }
  

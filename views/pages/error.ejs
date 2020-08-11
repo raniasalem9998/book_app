@@ -2,28 +2,16 @@
 <html>
   <head>
     <title>Error</title>
-    <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/base.css">
-    <link rel="stylesheet" href="styles/layout.css">
-    <link rel="stylesheet" href="styles/modules.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <%- include('../layout/head') %>
   </head>
   <body>
-    <header>
-        <h1>Best Books !</h1>
-        <i class="fa fa-bars fa-2x" aria-hidden="true" style="color: aliceblue;"></i>
-    </header>
+    <%- include('../layout/header') %>
 
     <main>
         <h1><%= error.message %></h1>
         <h2><%= error.status %></h2>
     </main>
      
-    <footer>
-      <i class="fa fa-circle fa-2x" aria-hidden="true" style="color:  rgb(85, 84, 84);" ></i>
-      <i class="fa fa-circle fa-2x" aria-hidden="true" style="color: rgb(85, 84, 84);"></i>
-      <i class="fa fa-circle fa-2x" aria-hidden="true" style="color:  rgb(85, 84, 84);"></i>
-      <i class="fa fa-circle fa-2x" aria-hidden="true" style="color:  rgb(85, 84, 84);"></i>
-  </footer>
+    <%- include('../layout/footer') %>
   </body>
 </html>
