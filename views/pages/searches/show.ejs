@@ -3,10 +3,10 @@
 <head>
    
     <title>Books</title>
-    <%- include('../layout/head') %>
+    <%- include('../../layout/head') %>
 </head>
 <body>
-    <%- include('../layout/header') %>
+    <%- include('../../layout/header') %>
 
     <main>
         <h1>Search Results</h1>
@@ -17,15 +17,29 @@
                         <img src=" <%= book.img_url %> " alt="cover">
                         <h2> <%= book.title %></h2>
                         <h3> <%= book.author %></h3>
-                        <p> <%= book.discription %></p>
+                        <p> <%= book.description %></p>
                       </div>
-                       
+                    <form action="/books" method="POST">
+                        <label for="title">Title <input name= "title" id="title" type="text" value=<%= book.title %> ></label> 
+                        <br>
+                        <label for="author">Author <input name='author' id = 'author' type="text" value=<%= book.author %> ></label>
+                        <br>
+                        <label for="ISBN">ISBN <input name='ISBN' id = 'ISBN' type="text" value=<%= book.ISBN %> ></label>
+                        <br>
+                        <label for="img_url">Image Path <input name='img_url' id = 'img_url' type="text" value=<%= book.img_url%> ></label>
+                        <br>
+                        <label for="description">Description <input name='description' id = 'description' type="text" value=<%= book.description %> ></label>
+                        <br>
+                        <label for="bookshelf">Book Shelf <input type="text" > </label>
+                        <br>
+                        <button type="submit">Add book to shelf</button>
+                    </form>
                     </li>
                 <% }); %>
             </ul>
        
     </main>
     
-    <%- include('../layout/footer') %>
+    <%- include('../../layout/footer') %>
 </body>
 </html>

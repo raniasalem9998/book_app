@@ -24,15 +24,15 @@ ul li{
     margin: auto;
     height: 80%;
 }
-ul li div{
+ul li section{
     margin-top: 5%;
 }
-li div h2{
+li section h2{
     font-size: small;
     color: white;
     font-style: unset;
 }
-li div h3{
+li section h3{
     margin-top: 10px;
     font-size: x-small;
     color: black;
@@ -44,12 +44,12 @@ li p{
     color: black;
     text-align: start;
 }
-li div{
+li section{
   width: 60%;  
   margin: auto;
   
 }
-form button{
+button{
      background-color: black;
      outline: none;
      color: white;
