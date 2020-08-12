@@ -10,18 +10,20 @@
 
     <main>
             <h6>Here you can search and save your favorit books </h6>
-            <h2><%= bookNum %> Saved Books</h2>
+            <h6><%= bookNum %> Saved Books</h6>
             <a href='/search/new'>search</a>
 
     <ul>
         <% books.forEach(book=>{ %>
-           <div id='result'><img src='<%= book.image_url %>'>
-            <br>
-            <h2><%= book.title %></h2> 
-            <br>
-            <h3><%= book.author %></h3>
-            <a href="/books/<%= book.id%>"><button>View Details</button></a>
-            </div> 
+            <li>
+                <section id='result'><img src=<%= book.image_url %>>
+                    <br>
+                    <h2><%= book.title %></h2> 
+                    <br>
+                    <h3><%= book.author %></h3>
+                    <a href="/books/<%= book.id%>"><button>View Details</button></a>
+                </section> 
+            </li>
        <% }) %>
         
     </ul>
