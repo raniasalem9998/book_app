@@ -12,5 +12,18 @@
       
     </main>
     <%- include('../../layout/footer') %>
+
 </body>
+<script>
+    $('#updateDataForm').hide();
+    $('#showform').click(()=>{
+    $('#updateDataForm').slideToggle();
+})
+
+$(".tabs").hide();
+$("#burger").click(()=>{
+  $(".tabs").slideToggle();
+ });
+
+</script>
 </html>

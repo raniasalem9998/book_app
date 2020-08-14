@@ -4,6 +4,9 @@ main section{
 header h1{
     grid-column: 1;
 }
+header ul{
+    grid-column: 2;
+}
 header i {
     grid-column: 3;
 }
@@ -19,15 +22,14 @@ main ul{
     grid-row: 2;
 }
 main ul{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr  1fr 1fr 1fr 1fr ;
-    align-content: space-around;  
+    /* display: grid; */
+    /* grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr  1fr 1fr 1fr 1fr ; */
+    /* align-content: space-around;   */
     justify-items: center;
     margin: auto;
     margin-top: 30px;
     width:100%;
 
-    
   }
 form{
     text-align: center;

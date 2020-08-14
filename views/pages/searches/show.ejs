@@ -19,16 +19,17 @@
                         <h3> <%= book.author %></h3>
                         <p> <%= book.description %></p>
                       </div>
-                    <form action="/books/:id" method="POST">
-                        <label for="title">Title <input name= "title" id="title" type="text" value=<%= book.title %> ></label> 
+                      <button id="showform">Add To Shelf</button>
+                    <form  id= 'updateDataForm' action="/books" method="POST">
+                        <label for="title">Title <input name= "title" id="title" type="text" value="<%= book.title %>" ></label> 
                         <br>
-                        <label for="author">Author <input name='author' id = 'author' type="text" value=<%= book.author %> ></label>
+                        <label for="author">Author <input name='author' id = 'author' type="text" value="<%= book.author %>" ></label>
                         <br>
-                        <label for="ISBN">ISBN <input name='ISBN' id = 'ISBN' type="text" value=<%= book.ISBN %> ></label>
+                        <label for="ISBN">ISBN <input name='ISBN' id = 'ISBN' type="text" value="<%= book.ISBN %>" ></label>
                         <br>
-                        <label for="img_url">Image Path <input name='img_url' id = 'img_url' type="text" value=<%= book.image_url%> ></label>
+                        <label for="image_url">Image Path <input name='image_url' id = 'image_url' type="text" value= "<%= book.image_url%>" ></label>
                         <br>
-                        <label for="description">Description <input name='description' id = 'description' type="text" value=<%= book.description %> ></label>
+                        <label for="description">Description <input name='description' id = 'description' type="text" value= "<%= book.description %>" ></label>
                         <br>
                         <label for="bookshelf">Book Shelf <input type="text" > </label>
                         <br>
@@ -39,7 +40,21 @@
             </ul>
        
     </main>
+    <script>
+        $('#updateDataForm').hide();
+        $('#showform').click(()=>{
+        $('#updateDataForm').slideToggle();
+    })
+    
+    $(".tabs").hide();
+    $("#burger").click(()=>{
+      $(".tabs").slideToggle();
+     });
+    
+    </script>
     
     <%- include('../../layout/footer') %>
+
+  
 </body>
 </html>

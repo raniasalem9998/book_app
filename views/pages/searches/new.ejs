@@ -9,22 +9,44 @@
     <%- include('../../layout/header') %>
 
     <main>
-        <form action="/searches" method="POST">
+        <form id= 'search' action="/searches" method="POST">
             <fieldset>
-                <label for="book" id="book_id">Enter a title or author 
+                <label  for="book" id="title">Enter a title or author 
                     <input type="text" id="book_id" name="search" placeholder="Enter a title or author">
                 </label>
+                <br>
                 <br>
                 <label for="searchBy" id="searchBy">
                     <lable value="Title">Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="title" id="searchBy"></lable>
                     <br>
+                    <br>
                     <lable value="Author">Author&nbsp;&nbsp;<input type="radio" name="auther" id="searchBy"></lable>
                 </label>
+                <br>
                 <br>
                 <button type="submit">Search the Google Books API</button>
             </fieldset>
         </form>
     </main>
+    <style>
+        label{
+            padding:5px 20px 5px 20px;
+            background-color: rgb(216, 214, 214);
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+    <script>
+        $('#updateDataForm').hide();
+        $('#showform').click(()=>{
+        $('#updateDataForm').slideToggle();
+    })
+    
+    $(".tabs").hide();
+    $("#burger").click(()=>{
+      $(".tabs").slideToggle();
+     });
+    
+    </script>
 
     <%- include('../../layout/footer') %>
    

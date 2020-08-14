@@ -1,12 +1,50 @@
 <section>
+        <br>
+        <br>
+        <br>
         <img src="<%= book.image_url %>">
         <h2><%= book.title%></h2>
         <h3><%= book.author %></h3>
         <p><%= book.description %></p>
         <p><%= book.ISBN %></p>
         <h3><%= book.bookshelf %></h3>
-        <!-- <button class="myBtn">UPDATE THIS BOOK</button> -->
-        <form action='/books/<%= book.id %>?_method=DELETE' method="POST" >
-                <button type="submit">DELETE</button>
+
+        <button id="showform" >Update Details</button>
+        <form id="updateDataForm" action="/books/<%= book.id %>?_method=put" method="post">
+                <label for="">Title:</label>
+                <br />
+                <input type="text" name="updatedTitle" value="<%= book.title %>">
+                <br />
+                <label for="">Author:</label>
+                <br />
+                <input type="text" name="updatedAuthor" value="<%= book.author %>">
+                <br />
+                <label for="">ISBN:</label>
+                <br />
+                <input type="text" name="updatedisbn" value="<%= book.ISBN %>">
+                <br />
+                <label for="">Image LINK:</label>
+                <br />
+                <input type="text" name="updatedImage_url" value="<%= book.image_url %>">
+                <br />
+                <label for="updatedDescription">Describtion:</label>
+                <br />
+                <textarea id="updatedDescription" style="resize: none; width: 90%; height: 10em;"
+                        name="updatedDescription">      <%= book.description %>           </textarea>
+                <br />
+                <label for="bookshelf">Bookshelf <input id="bookshelf" name="bookshelf" type="text"> </label>
+                <br><br>
+        
+                <button id="save" type="submit">Save Changes</button>
         </form>
+
+
+
+                <form action="/books/<%= book.id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete This Book Permenentley </button>
+                </form>
+
+              
+
+                
 </section>

@@ -31,6 +31,7 @@ app.get('/books/:id',showSelected);   //-------------------------------
 app.post('/searches',api);            //------------------------------- 
 app.post('/books',save);              //-------------------------------
 app.delete('/books/:id',deletion);    //-------------------------------
+// app.put('/book/:id', updateBook);     //-------------------------------
 // --------------------------------------------------------------------
 
 
@@ -48,10 +49,28 @@ function searchNew(req,res){
 
 function showSelected(req,res){
 client.query('SELECT * FROM books WHERE id=$1;',[req.params.id]).then(data =>{
-  res.render('pages/books/show.ejs', {book:data.rows[0]});
+  let SQL2 = 'SELECT DISTINCT bookshelf FROM books;';
+  return client.query(SQL2).then(bookshelfData => {
+    res.render('pages/books/show', {book:data.rows[0], bookshelfes : bookshelfData.rows});
+    console.log( bookshelfData.rows)
+  })
 })
 };
 
+// function updateBook(req,res){
+//   let {author,title,ISBN,image_url,description,bookshelf} = req.body;
+//   let SQL = 'SELECT * FROM books WHERE ISBN = $1;';
+//   let values = [req.body.ISBN];
+  
+//   return client.query(SQL,values).then(data => {
+//       let SQL2 = 'UPDATE books SET author=$1, title = $2, ISBN = $3, image_url = $4, description = $5, bookshelf = $6 WHERE ISBN = $3;';
+//       let values2 = [author,title,ISBN,image_url,description,bookshelf];
+      
+//       return client.query(SQL2, values2).then( ()=>{
+//           res.redirect(`/book/${data.rows[0].id}`);
+//         })
+//   })
+// }
 
 function api(req,res){
   let url = `https://www.googleapis.com/books/v1/volumes?q=${req.body.search}+${req.body.title ? 'intitle' : 'inauthor'}`;
@@ -69,26 +88,36 @@ function api(req,res){
 
 function save (req,res){
 let data = req.body;
-let SQL = 'INSERT INTO books(title,author,ISBN,description,image_url,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
+let id = req.params.id;
+let SQL = 'INSERT INTO books(title,author,ISBN,description,image_url,bookshelf) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id';
 let array = [data.title,data.author,data.ISBN,data.description,data.image_url,data.bookshelf];
 client.query(SQL,array).then(response=>{
-  res.redirect('/books/:id')
+  console.log([data])
+  res.redirect(`/books/${response.rows[0].id}`)
 })
 };
 
 function deletion(req,res){
 let id = [req.params.id];
-let SQL = 'DELETE FROM books (title,author,ISBN,description,image_url,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
+let SQL = `DELETE FROM books WHERE id=$1;`;
   return client.query(SQL,id).then(()=>{
     res.redirect('/');
   })
 };
 
 
+app.put('/books/:id',(req, res) =>{
+let {updatedTitle, updatedAuthor,updatedisbn,updatedImage_url,updatedDescription,bookshelf} = req.body;
+let sql = `UPDATE books SET title=$1,author=$2,ISBN=$3,image_url=$4,description=$5,bookshelf=$6 WHERE id =$7;`;
+let newValues = [updatedTitle,updatedAuthor,updatedisbn,updatedImage_url,updatedDescription,bookshelf,req.params.id];
+client.query(sql, newValues).then(() => {
+    res.redirect('/');
+})
+});
 
 function Books(data) {
   this.title = data.volumeInfo.title || 'not-available';
-  this.img_url = data.volumeInfo.imageLinks.thumbnail.replace(/^(http:)/g,'https:')  || 'https://i.imgur.com/J5LVHEL.jpg';
+  this.image_url = (data.volumeInfo.imageLinks.thumbnail.replace(/^(http:\/\/)/g,'https:'))  || "https://i.imgur.com/J5LVHEL.jpg";
   this.author = data.volumeInfo.authors || 'not-available';
   this.ISBN = data.volumeInfo.industryIdentifiers[0].identifier || 'not-available';
   this.description = data.volumeInfo.description|| 'not-available';
