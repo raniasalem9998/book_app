@@ -5,7 +5,8 @@ CREATE TABLE books (
     author VARCHAR(255),
     title VARCHAR(255),
     ISBN VARCHAR(255),
-    img_url VARCHAR(255),
-    description VARCHAR(225),
-    bookshelf VARCHAR(255)
+    image_url VARCHAR(255),
+    description TEXT ,
+    bookshelf VARCHAR(255),
+    due DATE NOT NULL DEFAULT NOW()
   );

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
     <title>book-app</title>
     <%- include('../layout/head') %>
 </head>
@@ -9,25 +8,40 @@
     <%- include('../layout/header') %>
 
     <main>
-            <h6>Here you can search and save your favorit books </h6>
-            <h6><%= bookNum %> Saved Books</h6>
-            <a href='/search/new'>search</a>
+        <h1>HOME PAGE</h1>
+        <br> <br>
+            <h2>Here you can search and save your favorit books </h2>
+                <br>
+            <h3><%= bookNum %> Saved Books</h3>
 
     <ul>
         <% books.forEach(book=>{ %>
             <li>
-                <section id='result'><img src=<%= book.image_url %>>
+                <div id='result'><img src=<%= book.image_url %>>
                     <br>
                     <h2><%= book.title %></h2> 
-                    <br>
+
                     <h3><%= book.author %></h3>
                     <a href="/books/<%= book.id%>"><button>View Details</button></a>
-                </section> 
+                    <br>
+                </div> 
             </li>
        <% }) %>
         
     </ul>
     </main>
+    <script>
+        $('#updateDataForm').hide();
+        $('#showform').click(()=>{
+        $('#updateDataForm').slideToggle();
+    })
+    
+    $(".tabs").hide();
+    $("#burger").click(()=>{
+      $(".tabs").slideToggle();
+     });
+    
+    </script>
     <%- include('../layout/footer') %>
  
 </body>

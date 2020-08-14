@@ -2,14 +2,9 @@ header h1{
     color:white;
 font-size: x-large;
 }
-main h6{
-    text-align: center;
-    color: black;
-    font-size: xx-large;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-style: oblique;
-}
+
 main h1{
+   font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     color: white;
     font-size: medium;
@@ -17,12 +12,18 @@ main h1{
     font-style: oblique;
     background-color: rgb(85, 84, 84);
 }
+h2 , h3{
+    font-size: x-large;
+    font-family: cursive;
+}
 ul li{
     background-color: rgb(223, 221, 221);
     text-align: center;
     width: 80%;
     margin: auto;
-    height: 80%;
+    height: 95%;
+    margin-bottom: 30px;
+    border-radius: 10px;
 }
 ul li section{
     margin-top: 5%;
@@ -54,3 +55,22 @@ button{
      outline: none;
      color: white;
  }
+
+ .tabs , .tabs li{
+     color:white;
+     background-color: black;
+     text-align:center;
+
+ }
+
+ #search{
+     margin-top: 30%;
+
+ }
+ 
+ #searchBy label{
+    background-color: rgb(218, 213, 213);
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+ }
+

@@ -1,20 +1,25 @@
 <form action="/books" method="POST">
     <label for="title">Title <input name= "title" id="title" type="text" value=<%= book.title %> ></label> 
     <br>
+    <br>
     <label for="author">Author <input name='author' id = 'author' type="text" value=<%= book.author %> ></label>
+    <br>
     <br>
     <label for="ISBN">ISBN <input name='ISBN' id = 'ISBN' type="text" value=<%= book.ISBN %> ></label>
     <br>
-    <label for="img_url">Image Path <input name='img_url' id = 'img_url' type="text" value=<%= book.img_url%> ></label>
+    <br>
+    <label for="image_url">Image Path <input name='image_url' id = 'image_url' type="text" value=<%= book.image_url%> ></label>
+    <br>
     <br>
     <label for="description">Description <input name='description' id = 'description' type="text" value=<%= book.description %> ></label>
     <br>
-    <label for="bookshelf">Bookshelf</label>
-    <select name="bookshelf">    
+    <br>
+    
+    <!-- <select name="bookshelf">    
         <% bookshelfes.forEach(bookshelf => { %>
             <option value=<%=bookshelf.name %>><%=bookshelf.name %></option>
         <% }); %>
     </select>
-    <br>
-    <button type="submit">Update Details</button>
+    <br><br>
+    <button type="submit">Update Details</button> -->
 </form>

@@ -9,16 +9,21 @@
     <main>
     <%- include('../books/detail',{book:book}) %>
     <!-- inserting the obj again because its not in the detail file  -->
-    <section>
-        <form action='/book/<%= book.id %>?_method=DELETE' method="post" id="save">
-          <button class="deleat" type="submit">DELETE</button>
-        </form>
-    </section>
-    <section>
-        <button class="myBtn">UPDATE THIS BOOK</button>
-          <%- include('../../edit') %>
-      </section>
+      
     </main>
     <%- include('../../layout/footer') %>
+
 </body>
+<script>
+    $('#updateDataForm').hide();
+    $('#showform').click(()=>{
+    $('#updateDataForm').slideToggle();
+})
+
+$(".tabs").hide();
+$("#burger").click(()=>{
+  $(".tabs").slideToggle();
+ });
+
+</script>
 </html>
