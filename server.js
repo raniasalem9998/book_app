@@ -70,7 +70,7 @@ function api(req,res){
 function save (req,res){
 let data = req.body;
 let SQL = 'INSERT INTO books(title,author,ISBN,description,image_url,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
-let array = [data.title,data.author,data.ISBN,data.description,data.img_url,data.bookshelf];
+let array = [data.title,data.author,data.ISBN,data.description,data.image_url,data.bookshelf];
 client.query(SQL,array).then(response=>{
   res.redirect('/books/:id')
 })
@@ -89,10 +89,10 @@ let SQL = 'DELETE FROM books (title,author,ISBN,description,image_url,bookshelf)
 function Books(data) {
   this.title = data.volumeInfo.title || 'not-available';
   this.img_url = data.volumeInfo.imageLinks.thumbnail.replace(/^(http:)/g,'https:')  || 'https://i.imgur.com/J5LVHEL.jpg';
-  this.author = data.volumeInfo.authors.toString().join(',') || 'not-available';
+  this.author = data.volumeInfo.authors || 'not-available';
   this.ISBN = data.volumeInfo.industryIdentifiers[0].identifier || 'not-available';
-  this.description = data.volumeInfo.description.toString() || 'not-available';
-  this.bookshelf = data.volumeInfo.categories[0] || 'not-available';
+  this.description = data.volumeInfo.description|| 'not-available';
+  this.bookshelf = data.volumeInfo.categories || 'not-available';
 }
 
 client.connect().then(() => {
