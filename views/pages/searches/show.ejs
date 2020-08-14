@@ -40,21 +40,23 @@
             </ul>
        
     </main>
-    <script>
-        $('#updateDataForm').hide();
-        $('#showform').click(()=>{
-        $('#updateDataForm').slideToggle();
-    })
-    
-    $(".tabs").hide();
-    $("#burger").click(()=>{
-      $(".tabs").slideToggle();
-     });
-    
-    </script>
+
     
     <%- include('../../layout/footer') %>
 
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
+
+<script>
+    $('#updateDataForm').hide();
+    $('#showform').click(()=>{
+    $('#updateDataForm').slideToggle();
+})
+
+$(".tabs").hide();
+$("#burger").click(()=>{
+  $(".tabs").slideToggle();
+ });
+
+</script>
 </html>

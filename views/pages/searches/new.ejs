@@ -6,6 +6,7 @@
     <%- include('../../layout/head') %>
 </head>
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <%- include('../../layout/header') %>
 
     <main>
@@ -28,28 +29,30 @@
             </fieldset>
         </form>
     </main>
-    <style>
-        label{
-            padding:5px 20px 5px 20px;
-            background-color: rgb(216, 214, 214);
-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        }
-    </style>
-    <script>
-        $('#updateDataForm').hide();
-        $('#showform').click(()=>{
-        $('#updateDataForm').slideToggle();
-    })
-    
-    $(".tabs").hide();
-    $("#burger").click(()=>{
-      $(".tabs").slideToggle();
-     });
-    
-    </script>
+
 
     <%- include('../../layout/footer') %>
    
-    
+
 </body>
+<style>
+    label{
+        padding:5px 20px 5px 20px;
+        background-color: rgb(216, 214, 214);
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<script>
+    $('#updateDataForm').hide();
+    $('#showform').click(()=>{
+    $('#updateDataForm').slideToggle();
+})
+
+$(".tabs").hide();
+$("#burger").click(()=>{
+  $(".tabs").slideToggle();
+ });
+
+</script>
 </html>
