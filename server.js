@@ -7,6 +7,7 @@ const superagent = require('superagent');
 const cors = require('cors');
 const pg = require('pg');
 const methodOverride = require('method-override');
+const { response } = require('express');
 require('dotenv').config();
 
 
@@ -17,15 +18,16 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const client = new pg.Client(process.env.DATABASE_URL);
+
 client.on('error', err => console.error(err));
 
 
 // --------------------------------------------------------------------
 app.get('/',homepage);                //-------------------------------
-app.get('/books/:id',showSelected);   //-------------------------------
 app.get('/searches/new',searchNew);   //-------------------------------
+app.get('/books/:id',showSelected);   //-------------------------------
 app.post('/searches',api);            //------------------------------- 
 app.post('/books',save);              //-------------------------------
 app.delete('/books/:id',deletion);    //-------------------------------
@@ -67,16 +69,16 @@ function api(req,res){
 
 function save (req,res){
 let data = req.body;
-let SQL = 'INSERT INTO books(title,author,ISBN,description,img_url,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
+let SQL = 'INSERT INTO books(title,author,ISBN,description,image_url,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
 let array = [data.title,data.author,data.ISBN,data.description,data.img_url,data.bookshelf];
-client.query(SQL,array).then(res=>{
+client.query(SQL,array).then(response=>{
   res.redirect('/books/:id')
 })
 };
 
 function deletion(req,res){
-let id = req.params.id;
-let SQL = 'DELETE FROM books(title,author,ISBN,description,img_url,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
+let id = [req.params.id];
+let SQL = 'DELETE FROM books (title,author,ISBN,description,image_url,bookshelf) VALUES ($1,$2,$3,$4,$5,$6);';
   return client.query(SQL,id).then(()=>{
     res.redirect('/');
   })
@@ -85,28 +87,29 @@ let SQL = 'DELETE FROM books(title,author,ISBN,description,img_url,bookshelf) VA
 
 
 function Books(data) {
-  this.title = data.volumeInfo.title || 'not available';
+  this.title = data.volumeInfo.title || 'not-available';
   this.img_url = data.volumeInfo.imageLinks.thumbnail.replace(/^(http:)/g,'https:')  || 'https://i.imgur.com/J5LVHEL.jpg';
-  this.author = data.volumeInfo.authors || 'not available';
-  this.ISBN = data.volumeInfo.industryIdentifiers[0].identifier || 'not available';
-  this.description = data.volumeInfo.description || 'not available';
+  this.author = data.volumeInfo.authors.toString().join(',') || 'not-available';
+  this.ISBN = data.volumeInfo.industryIdentifiers[0].identifier || 'not-available';
+  this.description = data.volumeInfo.description.toString() || 'not-available';
+  this.bookshelf = data.volumeInfo.categories[0] || 'not-available';
 }
-
 
 client.connect().then(() => {
   app.listen(PORT, () => {
     console.log('Server is listening to port ', PORT);
+  })
+})  
+.catch(()=>{
+  console.log('error')
   });
-});
+
 
 app.all('*', (req, res) => {
   let error={'message':'not found','status':'404'}
   res.status(404).render('./pages/error.ejs',{error});
 });
 
-// process.on('uncaughtException', function (err) {
-//   console.log(err);
-// }); 
 
 app.all('*', (req, res) => {
   let error={'message':'server error','status':'500'}

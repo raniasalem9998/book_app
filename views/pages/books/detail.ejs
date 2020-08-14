@@ -5,8 +5,8 @@
         <p><%= book.description %></p>
         <p><%= book.ISBN %></p>
         <h3><%= book.bookshelf %></h3>
-        <button class="myBtn">UPDATE THIS BOOK</button>
-        <!-- <form action='/delete/<%= book.id %>?_method=DELETE' method="POST" >
-                <button class="deleat" type="submit">DELETE</button>
-        </form> -->
+        <!-- <button class="myBtn">UPDATE THIS BOOK</button> -->
+        <form action='/books/<%= book.id %>?_method=DELETE' method="POST" >
+                <button type="submit">DELETE</button>
+        </form>
 </section>
