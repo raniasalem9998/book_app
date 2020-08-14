@@ -6,6 +6,6 @@ CREATE TABLE books (
     title VARCHAR(255),
     ISBN VARCHAR(255),
     img_url VARCHAR(255),
-    description VARCHAR(225),
+    description ,
     bookshelf VARCHAR(255)
   );
