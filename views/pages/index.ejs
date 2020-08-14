@@ -5,6 +5,7 @@
     <%- include('../layout/head') %>
 </head>
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <%- include('../layout/header') %>
 
     <main>
@@ -30,19 +31,20 @@
         
     </ul>
     </main>
-    <script>
-        $('#updateDataForm').hide();
-        $('#showform').click(()=>{
-        $('#updateDataForm').slideToggle();
-    })
-    
-    $(".tabs").hide();
-    $("#burger").click(()=>{
-      $(".tabs").slideToggle();
-     });
-    
-    </script>
+
     <%- include('../layout/footer') %>
  
 </body>
+<script>
+    $('#updateDataForm').hide();
+    $('#showform').click(()=>{
+    $('#updateDataForm').slideToggle();
+})
+
+$(".tabs").hide();
+$("#burger").click(()=>{
+  $(".tabs").slideToggle();
+ });
+
+</script>
 </html>
