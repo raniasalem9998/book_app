@@ -31,7 +31,6 @@ app.get('/books/:id',showSelected);   //-------------------------------
 app.post('/searches',api);            //------------------------------- 
 app.post('/books',save);              //-------------------------------
 app.delete('/books/:id',deletion);    //-------------------------------
-// app.put('/book/:id', updateBook);     //-------------------------------
 // --------------------------------------------------------------------
 
 
@@ -57,20 +56,7 @@ client.query('SELECT * FROM books WHERE id=$1;',[req.params.id]).then(data =>{
 })
 };
 
-// function updateBook(req,res){
-//   let {author,title,ISBN,image_url,description,bookshelf} = req.body;
-//   let SQL = 'SELECT * FROM books WHERE ISBN = $1;';
-//   let values = [req.body.ISBN];
-  
-//   return client.query(SQL,values).then(data => {
-//       let SQL2 = 'UPDATE books SET author=$1, title = $2, ISBN = $3, image_url = $4, description = $5, bookshelf = $6 WHERE ISBN = $3;';
-//       let values2 = [author,title,ISBN,image_url,description,bookshelf];
-      
-//       return client.query(SQL2, values2).then( ()=>{
-//           res.redirect(`/book/${data.rows[0].id}`);
-//         })
-//   })
-// }
+
 
 function api(req,res){
   let url = `https://www.googleapis.com/books/v1/volumes?q=${req.body.search}+${req.body.title ? 'intitle' : 'inauthor'}`;
