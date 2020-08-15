@@ -1,9 +1,9 @@
 
-$('#showform').click(()=>{
-    $('#updateDataForm').slideToggel();
-})
+// $('#showform').click(()=>{
+//     $('#updateDataForm').slideToggel();
+// })
 
 
-$("#burger").hover(()=>{
-  $(".tabs").slideToggel();
- });
+// $("#burger").hover(()=>{
+//   $(".tabs").slideToggel();
+//  });

@@ -31,7 +31,7 @@
                         <br>
                         <label for="description">Description <input name='description' id = 'description' type="text" value= "<%= book.description %>" ></label>
                         <br>
-                        <label for="bookshelf">Book Shelf <input type="text" > </label>
+                        <label for="bookshelf">Book Shelf <input type="text" name="bookshelf"> </label>
                         <br>
                         <button type="submit">Add book to shelf</button>
                     </form>
@@ -50,12 +50,13 @@
 <script>
     $('#updateDataForm').hide();
     $('#showform').click(()=>{
+    $('#showform').slideToggle(); 
     $('#updateDataForm').slideToggle();
 })
 
 $(".tabs").hide();
 $("#burger").click(()=>{
-  $(".tabs").slideToggle();
+$(".tabs").slideToggle();
  });
 
 </script>
