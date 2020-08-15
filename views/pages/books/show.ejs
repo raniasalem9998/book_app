@@ -14,10 +14,18 @@
     <%- include('../../layout/footer') %>
 
 </body>
+<style>
+    #select{
+        width: 60%;
+        color: black;
+        background-color: gray;
+    }
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $('#updateDataForm').hide();
     $('#showform').click(()=>{
+    $('#showform').slideToggle();
     $('#updateDataForm').slideToggle();
 })
 

@@ -32,9 +32,15 @@
                 <textarea id="updatedDescription" style="resize: none; width: 90%; height: 10em;"
                         name="updatedDescription">      <%= book.description %>           </textarea>
                 <br />
-                <label for="bookshelf">Bookshelf <input id="bookshelf" name="bookshelf" type="text"> </label>
-                <br><br>
-        
+                <br>
+                <label for="bookshelf">Book Shelf:</label>
+                <select name="bookshelf" id='select'>    
+                        <% bookshelfes.forEach(bookshelf => { %>
+                        <option value=<%=bookshelf.bookshelf %>><%=bookshelf.bookshelf %></option>
+                        <% }); %>
+                </select>
+                 <br><br>
+                        
                 <button id="save" type="submit">Save Changes</button>
         </form>
 

@@ -57,7 +57,6 @@ client.query('SELECT * FROM books WHERE id=$1;',[req.params.id]).then(data =>{
 };
 
 
-
 function api(req,res){
   let url = `https://www.googleapis.com/books/v1/volumes?q=${req.body.search}+${req.body.title ? 'intitle' : 'inauthor'}`;
 
@@ -107,7 +106,6 @@ function Books(data) {
   this.author = data.volumeInfo.authors || 'not-available';
   this.ISBN = data.volumeInfo.industryIdentifiers[0].identifier || 'not-available';
   this.description = data.volumeInfo.description|| 'not-available';
-  this.bookshelf = data.volumeInfo.categories || 'not-available';
 }
 
 client.connect().then(() => {
